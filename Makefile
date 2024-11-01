@@ -15,4 +15,4 @@ $(TARGET).wasm: $(SRC)
 
 # Clean target
 clean:
-	rm -f build/*.wasm build/*.js
+	rm -f build/* dist/*
