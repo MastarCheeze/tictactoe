@@ -1,5 +1,5 @@
 SRC_C = src/c/tictactoe.c
-SRC_JS = src/js/main.js
+SRC_JS = src/web/main.js
 TARGET = build/tictactoe
 EMCC = emcc
 
