@@ -1,5 +1,4 @@
-SRC_C = src/c/tictactoe.c
-SRC_JS = src/web/main.js
+SRC = src/c/tictactoe.c
 TARGET = build/tictactoe
 EMCC = emcc
 
@@ -12,7 +11,6 @@ $(TARGET).wasm: $(SRC)
 		-sMODULARIZE=1 \
 		-sEXPORT_ES6=1 \
 		-sENVIRONMENT=web
-	npx webpack
 
 # Clean target
 clean:
