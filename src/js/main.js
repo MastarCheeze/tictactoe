@@ -1,4 +1,5 @@
-import { loadWasmModule } from "./wasm_loader";
+import createModule from "../../build/tictactoe.js";
 
-const module = await loadWasmModule();
+const module = await createModule();
 console.log(module);
+window.module = module;
