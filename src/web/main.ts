@@ -1,19 +1,19 @@
-import createModule from "../../build/tictactoe.js";
+import createModule from "../../build/tictactoe";
 import "./style.css";
 
 // Initialise WASM module
 const module = await createModule();
-const players = [0, 0];
+const players: [number, number] = [0, 0];
 let curPlayer = 0;
 const checkWin = module._checkWin;
 const checkTie = module._checkTie;
 
 // Get DOM elements
-const status = document.querySelector("#status");
-const reset = document.querySelector("#reset");
-const cells = [];
+const status = document.querySelector("#status") as HTMLElement;
+const reset = document.querySelector("#reset") as HTMLElement;
+const cells: HTMLElement[] = [];
 for (let i = 0; i < 9; i++) {
-  cells[i] = document.querySelector(`#cell-${i + 1}`);
+  cells[i] = document.querySelector(`#cell-${i + 1}`)!;
 }
 
 function updateGrid() {
@@ -28,7 +28,7 @@ function updateGrid() {
   }
 }
 
-function getSymbol(player) {
+function getSymbol(player: number) {
   if (player == 0) {
     return "O";
   } else {

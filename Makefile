@@ -1,11 +1,12 @@
 SRC = src/c/tictactoe.c
 TARGET = build/tictactoe
+TARGET_TSD = tictactoe.d.ts
 EMCC = emcc
 
 all: $(TARGET).wasm
 
 $(TARGET).wasm: $(SRC)
-	$(EMCC) $(SRC) -o $(TARGET).js \
+	$(EMCC) $(SRC) -o $(TARGET).js --emit-tsd $(TARGET_TSD)\
 		-sWASM=1 \
 		-sEXPORTED_RUNTIME_METHODS=getValue,setValue \
 		-sMODULARIZE=1 \
