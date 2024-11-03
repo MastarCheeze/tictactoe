@@ -74,6 +74,10 @@ main {
   background-color: color-mix(in srgb, var(--bg-color), green 75%);
 }
 
+.last-move {
+  background-color: color-mix(in srgb, var(--bg-color), deepskyblue 35%);
+}
+
 footer {
   text-align: center;
   margin-top: 3rem;

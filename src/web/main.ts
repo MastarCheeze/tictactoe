@@ -46,6 +46,9 @@ for (let i = 0; i < 9; i++) {
     // play move
     players[curPlayer] |= 1 << i;
 
+    const lastCell = document.querySelector(".last-move") as HTMLElement | null;
+    lastCell?.classList.remove("last-move");
+
     // check game over
     const winMask = checkWin(players[curPlayer]);
     if (winMask) {
@@ -62,7 +65,7 @@ for (let i = 0; i < 9; i++) {
         cells[i].classList.add("disable");
       }
     } else {
-      cells[i].classList.add("disable");
+      cells[i].classList.add("disable", "last-move");
       curPlayer ^= 1;
       status.innerText = `${getSymbol(curPlayer)}'s turn`;
     }
