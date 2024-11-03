@@ -2,4 +2,6 @@
 
 Tic tac toe game played in the browser.
 
-Made with C compiled into WebAssembly, HTML, CSS and Typescript. Kinda overkill, this is for learning purposes only lol.
+Website hosted on GitHub Pages at https://mastarcheeze.github.io/tictactoe/
+
+Made with WebAssembly compiled from C. Kinda overkill, this is for learning purposes only lol.
