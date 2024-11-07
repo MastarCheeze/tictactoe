@@ -6,6 +6,7 @@ static int winMasks[] = {
     0b100100100, 0b010010010, 0b001001001, // vertical
     0b100010001, 0b001010100,              // diagonal
 };
+static int calcMoveOrder[] = {4, 0, 2, 6, 8, 1, 3, 5, 7};
 
 int EMSCRIPTEN_KEEPALIVE checkWin(int mask) {
   for (int i = 0; i < 8; i++) {
@@ -23,7 +24,7 @@ int EMSCRIPTEN_KEEPALIVE checkTie(int mask1, int mask2) {
     return 0;
 }
 
-int countBits(int value) {
+int EMSCRIPTEN_KEEPALIVE countBits(int value) {
   int count = 0;
   while (value) {
     value &= value - 1;
@@ -37,7 +38,7 @@ int countBits(int value) {
 int negamax(int playerMask, int opponentMask) {
   if (checkWin(opponentMask))
     // play with food, prefer to win in most moves possible
-    return -(100 + countBits(playerMask & opponentMask));
+    return -100;
   else if (checkTie(playerMask, opponentMask)) {
     return 0;
   }
@@ -56,11 +57,12 @@ int negamax(int playerMask, int opponentMask) {
 int EMSCRIPTEN_KEEPALIVE calcBestMove(int playerMask, int opponentMask) {
   int bestMove = -1;
   int bestMoveHeuristic = -420;
-  for (int i = 1; i < (1 << 9); i <<= 1) {
-    if (!((playerMask | opponentMask) & i)) {
-      int heuristic = -negamax(opponentMask, playerMask | i);
+  for (int i = 0; i < 9; i++) {
+    int moveMask = (1 << calcMoveOrder[i]);
+    if (!((playerMask | opponentMask) & moveMask)) {
+      int heuristic = -negamax(opponentMask, playerMask | moveMask);
       if (heuristic > bestMoveHeuristic) {
-        bestMove = i;
+        bestMove = moveMask;
         bestMoveHeuristic = heuristic;
       }
     }

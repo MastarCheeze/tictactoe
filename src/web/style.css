@@ -34,6 +34,11 @@ header {
   margin-top: 0.5rem;
 }
 
+.ai-status {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
 main {
   display: flex;
   justify-content: center;
@@ -66,37 +71,41 @@ main {
   background-color: color-mix(in srgb, var(--bg-color), white 40%);
 }
 
-.disable {
+.cell-disable {
   pointer-events: none;
 }
 
-.highlight {
+.cell-highlight {
   background-color: color-mix(in srgb, var(--bg-color), green 75%);
 }
 
-.last-move {
+.cell-last-move {
   background-color: color-mix(in srgb, var(--bg-color), deepskyblue 35%);
 }
 
 footer {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
   text-align: center;
   margin-top: 3rem;
 }
 
-#reset {
+footer button {
   background-color: var(--fg-color);
   color: var(--bg-color);
   font-size: 1.25rem;
   padding: 8px 16px;
   border-width: 0 0 5px 0;
   border-color: color-mix(in srgb, var(--fg-color), black 5%);
+  width: 10rem;
 }
 
-#reset:hover {
+footer button:hover {
   filter: brightness(85%);
 }
 
-#reset:active {
+footer button:active {
   filter: brightness(85%);
   border-width: 0;
   transform: translateY(5px);
