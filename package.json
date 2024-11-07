@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "build": "npx webpack",
-    "watch:web": "onchange 'src/web/*' -- npm run build",
-    "watch:c": "onchange 'src/c/*' -- make"
+    "build": "make -B & npx webpack",
+    "watch": "onchange 'src/**' -- npm run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
